@@ -8,6 +8,7 @@ import yabm.client.render.ItemBackpackRenderer;
 public class ClientProxy extends CommonProxy {
 
     public static final ResourceLocation backpackTexture = new ResourceLocation("yabm", "textures/model/backpack.png");
+    public static final ResourceLocation vialHolderTexture = new ResourceLocation("yabm", "textures/model/vialholder.png");
 
     @Override
     public void registerRenderers() {
