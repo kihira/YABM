@@ -10,6 +10,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeEventFactory;
 import yabm.item.ItemBackpack;
+import yabm.item.ItemVialHolder;
 import yabm.proxy.CommonProxy;
 import yabm.util.EventHandler;
 import yabm.util.GuiHandler;
@@ -27,6 +28,7 @@ public class YABM {
     public static Config config;
 
     public static ItemBackpack itemBackpack;
+    public static ItemVialHolder itemVialHolder;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -40,5 +42,6 @@ public class YABM {
 
     private void registerItems() {
         itemBackpack = new ItemBackpack(config.itemBackpackID);
+        itemVialHolder = new ItemVialHolder(config.itemVialHolderID);
     }
 }

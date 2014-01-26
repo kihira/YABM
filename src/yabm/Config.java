@@ -10,6 +10,8 @@ public class Config {
     private final Configuration config;
 
     public int itemBackpackID;
+    public int itemVialHolderID;
+
     public int backpackSize;
 
     public Config(File file) {
@@ -24,6 +26,8 @@ public class Config {
         Property prop;
         prop = config.get(Configuration.CATEGORY_ITEM, "Backpack", 31500);
         itemBackpackID = prop.getInt();
+        prop = config.get(Configuration.CATEGORY_ITEM, "Vial Holder", 31501);
+        itemVialHolderID = prop.getInt();
     }
 
     private void loadGeneral() {
