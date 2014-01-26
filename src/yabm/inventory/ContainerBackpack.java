@@ -5,6 +5,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import yabm.item.ItemBackpack;
 
 public class ContainerBackpack extends Container {
 
@@ -48,7 +49,10 @@ public class ContainerBackpack extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if ((par2 < this.numRows * 9) && (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), true))) return null;
+            if (par2 < this.numRows * 9) {
+                if (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), false)) return null;
+            }
+            else if (itemstack1.getItem() instanceof ItemBackpack) return null;
             else if (!this.mergeItemStack(itemstack1, 0, this.numRows * 9, false)) return null;
 
             if (itemstack1.stackSize == 0) slot.putStack(null);

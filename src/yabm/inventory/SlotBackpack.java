@@ -13,6 +13,6 @@ public class SlotBackpack extends Slot {
 
     @Override
     public boolean isItemValid(ItemStack itemStack) {
-        return itemStack.itemID != YABM.itemBackpack.itemID;
+        return itemStack != null && (itemStack.itemID != YABM.itemBackpack.itemID);
     }
 }

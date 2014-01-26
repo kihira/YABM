@@ -22,21 +22,22 @@ public class ItemBackpack extends Item implements IBackpack {
 
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
         player.openGui(YABM.instance, 0, world, (int) player.posX, (int) player.posY, (int) player.posZ);
-
         return itemStack;
     }
 
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
-        short backpackCount = 0;
-        EntityPlayer player = (EntityPlayer) entity;
+        if (!world.isRemote) {
+            short backpackCount = 0;
+            EntityPlayer player = (EntityPlayer) entity;
 
-        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-            if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).itemID == YABM.itemBackpack.itemID) backpackCount++;
-        }
-        if (backpackCount > 1) {
-            player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 10, backpackCount - 1));
-            player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 10, backpackCount - 1));
+            for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+                if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).itemID == YABM.itemBackpack.itemID) backpackCount++;
+            }
+            if (backpackCount > 1) {
+                player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 10, backpackCount - 1));
+                player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 10, backpackCount - 1));
+            }
         }
     }
 }
