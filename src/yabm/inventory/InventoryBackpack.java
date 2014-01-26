@@ -12,10 +12,12 @@ public class InventoryBackpack implements IInventory {
     private final ItemStack[] inventoryContents;
     private final ItemStack backpackItemStack;
     private final EntityPlayer entityPlayer;
+    private final int backpackSize;
 
     public InventoryBackpack(EntityPlayer player, ItemStack itemStack) {
         backpackItemStack = itemStack;
         entityPlayer = player;
+        backpackSize = YABM.config.backpackSize * 9;
 
         if (itemStack.hasTagCompound()) {
             NBTTagList nbtTagList = itemStack.getTagCompound().getTagList("Contents");
@@ -27,12 +29,12 @@ public class InventoryBackpack implements IInventory {
                 if (j >= 0 && j < inventoryContents.length) inventoryContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
-        else inventoryContents = new ItemStack[27];
+        else inventoryContents = new ItemStack[backpackSize];
     }
 
     @Override
     public int getSizeInventory() {
-        return 27;
+        return backpackSize;
     }
 
     @Override
