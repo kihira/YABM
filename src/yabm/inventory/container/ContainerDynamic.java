@@ -1,6 +1,5 @@
 package yabm.inventory.container;
 
-import com.google.common.collect.ObjectArrays;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -14,7 +13,7 @@ public class ContainerDynamic extends Container {
     private IInventory inventoryUpper;
     private int numRows;
 
-    public ContainerDynamic(IInventory invLower, IInventory invUpper, Class<? extends Slot> upperSlotClass, Object[] additionalInitArgs, Class<?> ... constructorArgs) {
+    public ContainerDynamic(IInventory invLower, IInventory invUpper, Class<? extends Slot> upperSlotClass, Class<?> ... constructorArgs) {
         this.inventoryUpper = invUpper;
         invUpper.openChest();
         int offset;
@@ -32,7 +31,7 @@ public class ContainerDynamic extends Container {
         for (j = 0; j < this.numRows; ++j) {
             for (k = 0; k < columnCount; ++k) {
                 try {
-                    if (k + j * 9 < invUpper.getSizeInventory()) this.addSlotToContainer(upperSlotClass.getConstructor(constructorArgs).newInstance(ObjectArrays.concat(new Object[]{ invUpper, k + j * 9, offset + 8 + k * 18, 18 + j * 18}, additionalInitArgs, Object.class)));
+                    if (k + j * 9 < invUpper.getSizeInventory()) this.addSlotToContainer(upperSlotClass.getConstructor(constructorArgs).newInstance(invUpper, k + j * 9, offset + 8 + k * 18, 18 + j * 18));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
