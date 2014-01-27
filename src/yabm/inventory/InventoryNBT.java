@@ -7,13 +7,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import yabm.YABM;
 
-public class InventoryBackpack extends InventoryBasic {
+public class InventoryNBT extends InventoryBasic {
 
     private EntityPlayer entityPlayer;
     private ItemStack backpackItemStack;
 
-    public InventoryBackpack(EntityPlayer player, ItemStack itemStack) {
-        super("Backpack", false, YABM.config.backpackSize * 9);
+    public InventoryNBT(String name, boolean isLocalised, int size, EntityPlayer player, ItemStack itemStack) {
+        super(name, isLocalised, size);
         backpackItemStack = itemStack;
         entityPlayer = player;
     }
