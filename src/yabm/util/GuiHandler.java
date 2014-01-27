@@ -6,8 +6,8 @@ import net.minecraft.world.World;
 import yabm.YABM;
 import yabm.client.gui.GuiBackpack;
 import yabm.client.gui.GuiVialHolder;
-import yabm.inventory.ContainerBackpack;
-import yabm.inventory.ContainerVialHolder;
+import yabm.inventory.container.ContainerBackpack;
+import yabm.inventory.container.ContainerVialHolder;
 import yabm.inventory.InventoryNBT;
 
 public class GuiHandler implements IGuiHandler {

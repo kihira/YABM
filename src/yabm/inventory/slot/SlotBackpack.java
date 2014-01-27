@@ -1,4 +1,4 @@
-package yabm.inventory;
+package yabm.inventory.slot;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

@@ -1,10 +1,12 @@
-package yabm.inventory;
+package yabm.inventory.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import yabm.inventory.slot.SlotLocked;
+import yabm.inventory.slot.SlotVialHolder;
 import yabm.item.ItemBackpack;
 
 public class ContainerVialHolder extends Container {
