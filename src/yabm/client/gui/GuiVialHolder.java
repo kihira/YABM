@@ -1,16 +1,11 @@
 package yabm.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import yabm.inventory.container.ContainerBackpack;
 import yabm.inventory.container.ContainerDynamic;
-import yabm.inventory.container.ContainerVialHolder;
 import yabm.inventory.slot.SlotVialHolder;
 
 public class GuiVialHolder extends GuiContainer {
@@ -23,7 +18,7 @@ public class GuiVialHolder extends GuiContainer {
     private int offset;
 
     public GuiVialHolder(IInventory invPlayer, IInventory invBackpack) {
-        super(new ContainerDynamic(invPlayer, invBackpack, SlotVialHolder.class, IInventory.class, int.class , int.class , int.class));
+        super(new ContainerDynamic(invPlayer, invBackpack, SlotVialHolder.class, null, IInventory.class, int.class , int.class , int.class));
         this.inventoryPlayer = invPlayer;
         this.inventoryVialHolder = invBackpack;
         this.allowUserInput = false;
