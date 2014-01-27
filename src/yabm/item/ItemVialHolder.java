@@ -7,8 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import yabm.YABM;
+import yabm.api.IBackpack;
 
-public class ItemVialHolder extends Item {
+public class ItemVialHolder extends Item implements IBackpack {
 
     public ItemVialHolder(int id) {
         super(id);

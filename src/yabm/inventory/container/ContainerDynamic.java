@@ -5,6 +5,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import yabm.api.IBackpack;
 import yabm.inventory.slot.SlotLocked;
 import yabm.item.ItemBackpack;
 
@@ -40,13 +41,13 @@ public class ContainerDynamic extends Container {
 
         for (j = 0; j < 3; ++j) {
             for (k = 0; k < 9; ++k) {
-                if (invLower.getStackInSlot(k + j * 9 + 9) != null && invLower.getStackInSlot(k + j * 9 + 9).getItem() instanceof ItemBackpack) this.addSlotToContainer(new SlotLocked(invLower, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
+                if (invLower.getStackInSlot(k + j * 9 + 9) != null && invLower.getStackInSlot(k + j * 9 + 9).getItem() instanceof IBackpack) this.addSlotToContainer(new SlotLocked(invLower, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
                 else this.addSlotToContainer(new Slot(invLower, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
             }
         }
 
         for (j = 0; j < 9; ++j) {
-            if (invLower.getStackInSlot(j) != null && invLower.getStackInSlot(j).getItem() instanceof ItemBackpack) this.addSlotToContainer(new SlotLocked(invLower, j, 8 + j * 18, 161 + i));
+            if (invLower.getStackInSlot(j) != null && invLower.getStackInSlot(j).getItem() instanceof IBackpack) this.addSlotToContainer(new SlotLocked(invLower, j, 8 + j * 18, 161 + i));
             else this.addSlotToContainer(new Slot(invLower, j, 8 + j * 18, 161 + i));
         }
     }
