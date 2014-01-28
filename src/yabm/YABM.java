@@ -1,22 +1,21 @@
 package yabm;
 
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeEventFactory;
 import yabm.item.ItemBackpack;
 import yabm.item.ItemVialHolder;
 import yabm.proxy.CommonProxy;
 import yabm.util.EventHandler;
 import yabm.util.GuiHandler;
+import yabm.util.KeyHandler;
 
 @Mod(modid = "YABM", name = "YABM", version = "0.0.1")
-@NetworkMod(clientSideRequired = true)
+@NetworkMod(clientSideRequired = true, channels = {"YABM"}, packetHandler = yabm.util.PacketHandler.class)
 public class YABM {
 
     @Mod.Instance(value = "YABM")
@@ -35,6 +34,7 @@ public class YABM {
         config = new Config(e.getSuggestedConfigurationFile());
 
         registerItems();
+        registerKeyBinds();
         NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
         proxy.registerRenderers();
         MinecraftForge.EVENT_BUS.register(new EventHandler());
@@ -43,5 +43,9 @@ public class YABM {
     private void registerItems() {
         itemBackpack = new ItemBackpack(config.itemBackpackID);
         itemVialHolder = new ItemVialHolder(config.itemVialHolderID);
+    }
+
+    private void registerKeyBinds() {
+        KeyBindingRegistry.registerKeyBinding(new KeyHandler());
     }
 }
