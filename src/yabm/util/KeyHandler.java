@@ -25,7 +25,7 @@ public class KeyHandler extends KeyBindingRegistry.KeyHandler {
             //Gear GUI
             if (kb == gearGUIKeyBinding && Minecraft.getMinecraft().currentScreen == null) {
                 //System.out.println("Gear GUI button pressed!");
-                doBytePacket(0);
+                PacketHandler.sendBytePacket(0);
             }
         }
     }
@@ -43,23 +43,5 @@ public class KeyHandler extends KeyBindingRegistry.KeyHandler {
         return "YABM";
     }
 
-    private void doBytePacket(int ... bytes) {
 
-        ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
-        DataOutputStream outputStream = new DataOutputStream(bos);
-
-        try {
-            for (int i = 0; i < bytes.length; i++) {
-                outputStream.writeByte(bytes[i]);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        Packet250CustomPayload packet = new Packet250CustomPayload();
-        packet.channel = "YABM";
-        packet.data = bos.toByteArray();
-        packet.length = bos.size();
-        PacketDispatcher.sendPacketToServer(packet);
-    }
 }

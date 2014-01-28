@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import tconstruct.client.tabs.TabRegistry;
 import yabm.inventory.container.ContainerGear;
 
 public class GuiGear extends InventoryEffectRenderer {
@@ -22,6 +23,19 @@ public class GuiGear extends InventoryEffectRenderer {
         this.allowUserInput = false;
     }
 
+    @Override
+    public void initGui() {
+        super.initGui();
+
+        int cornerX = guiLeft;
+        int cornerY = (this.height - this.ySize) / 2;
+        this.buttonList.clear();
+
+        TabRegistry.updateTabValues(cornerX, cornerY, TabGear.class);
+        TabRegistry.addTabsToList(this.buttonList);
+    }
+
+    @Override
     public void drawScreen(int par1, int par2, float par3) {
         super.drawScreen(par1, par2, par3);
         this.xSize_lo = (float)par1;

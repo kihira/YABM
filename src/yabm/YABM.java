@@ -7,6 +7,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import tconstruct.client.tabs.TabRegistry;
+import yabm.client.gui.TabGear;
 import yabm.item.ItemBackpack;
 import yabm.item.ItemVialHolder;
 import yabm.proxy.CommonProxy;
@@ -38,6 +40,7 @@ public class YABM {
         NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
         proxy.registerRenderers();
         MinecraftForge.EVENT_BUS.register(new EventHandler());
+        TabRegistry.registerTab(new TabGear());
     }
 
     private void registerItems() {

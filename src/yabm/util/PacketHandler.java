@@ -2,6 +2,7 @@ package yabm.util;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IPacketHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +12,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import yabm.YABM;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class PacketHandler implements IPacketHandler {
 
@@ -36,5 +39,25 @@ public class PacketHandler implements IPacketHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void sendBytePacket(int ... bytes) {
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
+        DataOutputStream outputStream = new DataOutputStream(bos);
+
+        try {
+            for (int i = 0; i < bytes.length; i++) {
+                outputStream.writeByte(bytes[i]);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        Packet250CustomPayload packet = new Packet250CustomPayload();
+        packet.channel = "YABM";
+        packet.data = bos.toByteArray();
+        packet.length = bos.size();
+        PacketDispatcher.sendPacketToServer(packet);
     }
 }
