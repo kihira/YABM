@@ -2,21 +2,19 @@ package kihira.yabm.util;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
-import kihira.yabm.network.OpenGUIMessage;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 import kihira.yabm.YABM;
 import kihira.yabm.client.render.ItemBackpackRenderer;
 import kihira.yabm.client.render.VialHolderRenderer;
+import kihira.yabm.network.OpenGUIMessage;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 public class EventHandler {
 
     private final ItemBackpackRenderer itemBackpackRenderer = new ItemBackpackRenderer();
     private final VialHolderRenderer vialHolderRenderer = new VialHolderRenderer();
-    private final KeyBinding openGearGUI = new KeyBinding("key.opengeargui", 34, "key.categories.inventory");
 
     @SubscribeEvent
     public void onPlayerRender(RenderPlayerEvent.Specials.Pre e) {
@@ -61,7 +59,7 @@ public class EventHandler {
     @SubscribeEvent
     public void onKeyEvent(InputEvent.KeyInputEvent event) {
         int key = Keyboard.getEventKey();
-        if (key == openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {
+        if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {
             YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
         }
     }
