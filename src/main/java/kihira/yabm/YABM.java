@@ -16,7 +16,7 @@ import kihira.yabm.util.GuiHandler;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.client.tabs.TabRegistry;
 
-@Mod(modid = "YABM", name = "YABM", version = "0.0.1")
+@Mod(modid = "YABM", useMetadata = true)
 public class YABM {
 
     @Mod.Instance(value = "YABM")
