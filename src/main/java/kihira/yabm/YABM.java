@@ -22,7 +22,7 @@ public class YABM {
     @Mod.Instance(value = "YABM")
     public static YABM instance;
 
-    @SidedProxy(clientSide = "yabm.proxy.ClientProxy", serverSide = "yabm.proxy.CommonProxy")
+    @SidedProxy(clientSide = "kihira.yabm.proxy.ClientProxy", serverSide = "kihira.yabm.proxy.CommonProxy")
     public static CommonProxy proxy;
 
     public static Config config;
