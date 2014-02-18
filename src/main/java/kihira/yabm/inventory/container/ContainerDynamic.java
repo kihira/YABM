@@ -16,7 +16,7 @@ public class ContainerDynamic extends Container {
 
     public ContainerDynamic(IInventory invLower, IInventory invUpper, Class<? extends Slot> upperSlotClass, Class<?> ... constructorArgs) {
         this.inventoryUpper = invUpper;
-        invUpper.openChest();
+        invUpper.openInventory();
         int offset;
 
         if (invUpper.getSizeInventory() % 9 == 0) offset = 0;
@@ -79,6 +79,6 @@ public class ContainerDynamic extends Container {
 
     public void onContainerClosed(EntityPlayer par1EntityPlayer) {
         super.onContainerClosed(par1EntityPlayer);
-        this.inventoryUpper.closeChest();
+        this.inventoryUpper.closeInventory();
     }
 }

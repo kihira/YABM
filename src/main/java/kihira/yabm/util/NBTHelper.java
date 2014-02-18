@@ -7,11 +7,11 @@ import net.minecraft.nbt.NBTTagList;
 public class NBTHelper {
 
     public static ItemStack[] loadInventory(NBTTagCompound tagCompound, int size) {
-        NBTTagList nbtTagList = tagCompound.getTagList("Contents");
+        NBTTagList nbtTagList = tagCompound.getTagList("Contents", 0);
         ItemStack[] itemStacks = new ItemStack[size];
 
         for (int i = 0; i < nbtTagList.tagCount(); i++) {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbtTagList.tagAt(i);
+            NBTTagCompound nbttagcompound1 = nbtTagList.getCompoundTagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 255;
             if (j >= 0 && j < size) itemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
         }

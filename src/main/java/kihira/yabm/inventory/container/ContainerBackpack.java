@@ -18,7 +18,7 @@ public class ContainerBackpack extends Container {
     public ContainerBackpack(IInventory invPlayer, IInventory invBackpack) {
         this.backpackInventory = invBackpack;
         this.numRows = invBackpack.getSizeInventory() / 9;
-        invBackpack.openChest();
+        invBackpack.openInventory();
         int i = (this.numRows - 4) * 18;
         int j;
         int k;
@@ -69,6 +69,6 @@ public class ContainerBackpack extends Container {
 
     public void onContainerClosed(EntityPlayer par1EntityPlayer) {
         super.onContainerClosed(par1EntityPlayer);
-        this.backpackInventory.closeChest();
+        this.backpackInventory.closeInventory();
     }
 }

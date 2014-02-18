@@ -1,0 +1,16 @@
+[
+{
+  "modid": "yabm",
+  "name": "Yet Another Backpack Mod",
+  "description": "A more balanced backpack mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://kihirakreations.co.uk",
+  "updateUrl": "",
+  "authors": ["Kihira"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

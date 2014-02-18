@@ -16,8 +16,9 @@ public class InventoryGear extends InventoryBasic {
         this.openChest();
     }
 
-    public void onInventoryChanged() {
-        super.onInventoryChanged();
+    @Override
+    public void markDirty() {
+        super.markDirty();
         NBTTagCompound tags = this.player.getEntityData();
         NBTTagList tagList = new NBTTagList();
         NBTTagCompound invSlot;
@@ -35,9 +36,9 @@ public class InventoryGear extends InventoryBasic {
 
     public void openChest() {
         NBTTagCompound tags = this.player.getEntityData();
-        NBTTagList tagList = tags.getTagList("YABM.Gear");
+        NBTTagList tagList = tags.getTagList("YABM.Gear", 0);
         for (int i = 0; i < tagList.tagCount(); ++i) {
-            NBTTagCompound nbttagcompound = (NBTTagCompound) tagList.tagAt(i);
+            NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
             int j = nbttagcompound.getByte("Slot") & 255;
             ItemStack itemstack = ItemStack.loadItemStackFromNBT(nbttagcompound);
             if (itemstack != null) this.setInventorySlotContents(j, itemstack);
@@ -45,7 +46,7 @@ public class InventoryGear extends InventoryBasic {
     }
 
     public void closeChest() {
-        this.onInventoryChanged();
+        this.markDirty();
     }
 
     public int getInventoryStackLimit() {

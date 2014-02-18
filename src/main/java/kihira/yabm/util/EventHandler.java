@@ -2,6 +2,7 @@ package kihira.yabm.util;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
+import kihira.yabm.network.OpenGUIMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -61,7 +62,7 @@ public class EventHandler {
     public void onKeyEvent(InputEvent.KeyInputEvent event) {
         int key = Keyboard.getEventKey();
         if (key == openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {
-            PacketHandler.sendBytePacket(0);
+            YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
         }
     }
 }

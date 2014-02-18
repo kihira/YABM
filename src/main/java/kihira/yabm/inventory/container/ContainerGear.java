@@ -43,7 +43,7 @@ public class ContainerGear extends Container {
 
     public void onContainerClosed(EntityPlayer par1EntityPlayer) {
         super.onContainerClosed(par1EntityPlayer);
-        this.inventoryGear.closeChest();
+        this.inventoryGear.closeInventory();
     }
 
     @Override
