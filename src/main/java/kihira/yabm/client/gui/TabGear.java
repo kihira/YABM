@@ -1,7 +1,7 @@
 package kihira.yabm.client.gui;
 
 import kihira.yabm.YABM;
-import kihira.yabm.network.OpenGUIMessage;
+import kihira.yabm.network.YABMMessage;
 import net.minecraft.item.ItemStack;
 import tconstruct.client.tabs.AbstractTab;
 
@@ -13,7 +13,8 @@ public class TabGear extends AbstractTab {
 
     @Override
     public void onTabClicked() {
-        YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
+        //YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
+        YABM.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 0));
     }
 
     @Override

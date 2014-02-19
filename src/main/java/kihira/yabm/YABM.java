@@ -4,16 +4,19 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import kihira.yabm.client.gui.TabGear;
 import kihira.yabm.item.ItemBackpack;
 import kihira.yabm.item.ItemVialHolder;
+import kihira.yabm.network.PacketHandler;
 import kihira.yabm.proxy.CommonProxy;
 import kihira.yabm.util.EventHandler;
 import kihira.yabm.util.GuiHandler;
 import net.minecraft.client.settings.KeyBinding;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import tconstruct.client.tabs.TabRegistry;
 
 @Mod(modid = "YABM", useMetadata = true)
@@ -28,8 +31,10 @@ public class YABM {
     public static Config config;
     public static final ItemBackpack itemBackpack = new ItemBackpack();
     public static final ItemVialHolder itemVialHolder = new ItemVialHolder();
-    public static final SimpleNetworkWrapper messageWrapper = new SimpleNetworkWrapper("YABM");
+    //public static final SimpleNetworkWrapper messageWrapper = new SimpleNetworkWrapper("YABM");
     public static final KeyBinding openGearGUI = new KeyBinding("key.opengeargui", 34, "key.categories.inventory");
+    public static final PacketHandler packetHandler = new PacketHandler();
+    public static Logger logger = LogManager.getLogger("YABM");
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -42,6 +47,10 @@ public class YABM {
         TabRegistry.registerTab(new TabGear());
         registerMessages();
         registerKeyBindings();
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent e) {
     }
 
     private void registerMessages() {

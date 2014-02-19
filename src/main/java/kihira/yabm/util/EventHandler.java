@@ -5,7 +5,7 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import kihira.yabm.YABM;
 import kihira.yabm.client.render.ItemBackpackRenderer;
 import kihira.yabm.client.render.VialHolderRenderer;
-import kihira.yabm.network.OpenGUIMessage;
+import kihira.yabm.network.YABMMessage.*;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import org.lwjgl.input.Keyboard;
@@ -60,7 +60,8 @@ public class EventHandler {
     public void onKeyEvent(InputEvent.KeyInputEvent event) {
         int key = Keyboard.getEventKey();
         if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {
-            YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
+            //YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
+            YABM.packetHandler.sendToServer(new OpenGUIMessage((byte) 0));
         }
     }
 }
