@@ -10,7 +10,6 @@ import cpw.mods.fml.relauncher.Side;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import kihira.yabm.YABM;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 import java.util.EnumMap;
@@ -32,7 +31,6 @@ public class PacketHandler extends FMLIndexedMessageToMessageCodec<YABMMessage> 
 
     @Override
     public void decodeInto(ChannelHandlerContext ctx, ByteBuf source, YABMMessage msg) {
-        YABM.logger.info("Got a packet!");
         msg.fromBytes(source);
         IMessage reply = msg.onMessage(msg, ctx, FMLCommonHandler.instance().getEffectiveSide());
         if (reply != null) ctx.writeAndFlush(reply).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
@@ -97,7 +95,6 @@ public class PacketHandler extends FMLIndexedMessageToMessageCodec<YABMMessage> 
      * @param message The message to send
      */
     public void sendToServer(IMessage message) {
-        YABM.logger.info("Sending message to server!");
         channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.TOSERVER);
         channels.get(Side.CLIENT).writeAndFlush(message).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
     }

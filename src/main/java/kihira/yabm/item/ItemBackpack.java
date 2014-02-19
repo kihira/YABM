@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import kihira.yabm.YABM;
 import kihira.yabm.api.IBackpack;
 
+//TODO Serialise backpack to prevent duping from stuff like the PIM or other mods
 public class ItemBackpack extends Item implements IBackpack {
 
     public ItemBackpack() {

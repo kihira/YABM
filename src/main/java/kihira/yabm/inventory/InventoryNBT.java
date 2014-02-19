@@ -32,7 +32,6 @@ public class InventoryNBT extends InventoryBasic {
 
     @Override
     public void closeInventory() {
-        //onInventoryChanged();
         markDirty();
         NBTTagList nbttaglist = new NBTTagList();
         NBTTagCompound tagCompound = new NBTTagCompound();

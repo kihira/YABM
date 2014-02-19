@@ -59,8 +59,7 @@ public class EventHandler {
     @SubscribeEvent
     public void onKeyEvent(InputEvent.KeyInputEvent event) {
         int key = Keyboard.getEventKey();
-        if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {
-            //YABM.messageWrapper.sendToServer(new OpenGUIMessage((byte) 0));
+        if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {;
             YABM.packetHandler.sendToServer(new OpenGUIMessage((byte) 0));
         }
     }

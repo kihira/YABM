@@ -34,7 +34,6 @@ public abstract class YABMMessage implements IMessage {
         public IMessage onMessage(YABMMessage message, ChannelHandlerContext ctx, Side side) {
             if (side == Side.SERVER) {
                 NetHandlerPlayServer netHandler = (NetHandlerPlayServer) ctx.channel().attr(NetworkRegistry.NET_HANDLER).get();
-                YABM.logger.info(netHandler);
                 EntityPlayer playerMP = netHandler.playerEntity;
                 playerMP.openGui(YABM.instance, this.guiID, playerMP.worldObj, (int) playerMP.posX, (int) playerMP.posY, (int) playerMP.posZ);
             }
