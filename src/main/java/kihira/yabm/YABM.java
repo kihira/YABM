@@ -7,6 +7,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import kihira.yabm.client.gui.TabGear;
 import kihira.yabm.item.ItemBackpack;
 import kihira.yabm.item.ItemVialHolder;
@@ -47,6 +48,7 @@ public class YABM {
         TabRegistry.registerTab(new TabGear());
         registerMessages();
         registerKeyBindings();
+        registerItems();
     }
 
     @Mod.EventHandler
@@ -59,5 +61,10 @@ public class YABM {
 
     private void registerKeyBindings() {
         ClientRegistry.registerKeyBinding(openGearGUI);
+    }
+
+    private void registerItems() {
+        GameRegistry.registerItem(itemBackpack, "backpack");
+        GameRegistry.registerItem(itemVialHolder, "vialholder");
     }
 }
