@@ -11,7 +11,6 @@ public class VialHolderRenderer {
 
     public void render(float x, float y, float z, float scale, boolean isEquipped) {
         GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_LIGHTING);
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(ClientProxy.vialHolderTexture);
         GL11.glTranslated(x, y, z);
         GL11.glScalef(scale, scale, scale);
@@ -23,7 +22,6 @@ public class VialHolderRenderer {
             GL11.glRotatef(-45f, 0f, 0f, 1f);
         }
         modelVialHolder.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-        GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glPopMatrix();
     }
 }

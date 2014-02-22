@@ -46,7 +46,6 @@ public class ItemBackpackRenderer implements IItemRenderer {
 
     public void renderBackpackItem(float x, float y, float z, float scale, boolean isInventory, boolean isEquipped) {
         GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_LIGHTING);
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(ClientProxy.backpackTexture);
         GL11.glTranslated(x, y, z);
         GL11.glScalef(scale, scale, scale);
@@ -57,7 +56,6 @@ public class ItemBackpackRenderer implements IItemRenderer {
             GL11.glRotatef(180f, 1f, 0f, 0f);
         }
         modelBackpack.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-        GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glPopMatrix();
     }
 }
