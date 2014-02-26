@@ -12,7 +12,8 @@ import kihira.yabm.item.ItemBackpack;
 import kihira.yabm.item.ItemVialHolder;
 import kihira.yabm.network.PacketHandler;
 import kihira.yabm.proxy.CommonProxy;
-import kihira.yabm.util.EventHandler;
+import kihira.yabm.util.FMLEventHandler;
+import kihira.yabm.util.ForgeEventHandler;
 import kihira.yabm.util.GuiHandler;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,9 +44,9 @@ public class YABM {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         proxy.registerRenderers();
         //This registers the key handler
-        FMLCommonHandler.instance().bus().register(new EventHandler());
+        FMLCommonHandler.instance().bus().register(new FMLEventHandler());
         //And this is for forge events
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
         TabRegistry.registerTab(new TabGear());
         registerKeyBindings();
         registerItems();

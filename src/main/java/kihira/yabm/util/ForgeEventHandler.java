@@ -1,17 +1,13 @@
 package kihira.yabm.util;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.InputEvent;
 import kihira.yabm.YABM;
 import kihira.yabm.client.render.ItemBackpackRenderer;
 import kihira.yabm.client.render.VialHolderRenderer;
-import kihira.yabm.network.YABMMessage.*;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-public class EventHandler {
+public class ForgeEventHandler {
 
     private final ItemBackpackRenderer itemBackpackRenderer = new ItemBackpackRenderer();
     private final VialHolderRenderer vialHolderRenderer = new VialHolderRenderer();
@@ -53,14 +49,6 @@ public class EventHandler {
                 GL11.glDisable(3042);
                 GL11.glPopMatrix();
             }
-        }
-    }
-
-    @SubscribeEvent
-    public void onKeyEvent(InputEvent.KeyInputEvent event) {
-        int key = Keyboard.getEventKey();
-        if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {;
-            YABM.packetHandler.sendToServer(new OpenGUIMessage((byte) 0));
         }
     }
 }
