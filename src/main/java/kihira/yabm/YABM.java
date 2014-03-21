@@ -19,6 +19,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import tconstruct.client.tabs.InventoryTabVanilla;
 import tconstruct.client.tabs.TabRegistry;
 
 @Mod(modid = "YABM", useMetadata = true)
@@ -47,6 +48,7 @@ public class YABM {
         FMLCommonHandler.instance().bus().register(new FMLEventHandler());
         //And this is for forge events
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
+        TabRegistry.registerTab(new InventoryTabVanilla());
         TabRegistry.registerTab(new TabGear());
         registerKeyBindings();
         registerItems();
