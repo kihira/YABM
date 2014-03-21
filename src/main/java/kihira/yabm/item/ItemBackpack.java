@@ -1,5 +1,9 @@
 package kihira.yabm.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import kihira.yabm.YABM;
+import kihira.yabm.api.IBackpack;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,8 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import kihira.yabm.YABM;
-import kihira.yabm.api.IBackpack;
+
+import java.util.List;
 
 //TODO Serialise backpack to prevent duping from stuff like the PIM or other mods
 public class ItemBackpack extends Item implements IBackpack {
@@ -40,5 +44,15 @@ public class ItemBackpack extends Item implements IBackpack {
                 player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 10, backpackCount - 1));
             }
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    @SuppressWarnings("unchecked")
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        par3List.add("\u00a7cEquip backpack to prevent slowdown");
+        int i = 0;
+        if (par1ItemStack.hasTagCompound()) i = par1ItemStack.getTagCompound().getTagList("Contents", 0).tagCount();
+        par3List.add("Used slots: " + i + "/" + YABM.config.backpackSize * 9);
     }
 }
