@@ -13,7 +13,7 @@ public class FMLEventHandler {
     public void onKeyEvent(InputEvent.KeyInputEvent event) {
         int key = Keyboard.getEventKey();
         if (key == YABM.openGearGUI.getKeyCode() && Minecraft.getMinecraft().currentScreen == null) {;
-            YABM.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 0));
+            YABM.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 2));
         }
     }
 }

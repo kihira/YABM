@@ -14,14 +14,14 @@ public class InventoryNBT extends InventoryBasic {
 
     public InventoryNBT(String name, boolean isLocalised, int size, EntityPlayer player, ItemStack itemStack) {
         super(name, isLocalised, size);
-        backpackItemStack = itemStack;
-        entityPlayer = player;
+        this.backpackItemStack = itemStack;
+        this.entityPlayer = player;
     }
 
     @Override
     public void openInventory() {
-        if (backpackItemStack.hasTagCompound()) {
-            NBTTagList nbtTagList = backpackItemStack.getTagCompound().getTagList("Contents", 0);
+        if (this.backpackItemStack.hasTagCompound()) {
+            NBTTagList nbtTagList = this.backpackItemStack.getTagCompound().getTagList("Contents", 0);
             for (int i = 0; i < nbtTagList.tagCount(); i++) {
                 NBTTagCompound nbttagcompound1 = nbtTagList.getCompoundTagAt(i);
                 int j = nbttagcompound1.getByte("Slot") & 255;
@@ -46,8 +46,8 @@ public class InventoryNBT extends InventoryBasic {
         }
 
         tagCompound.setTag("Contents", nbttaglist);
-        backpackItemStack.setTagCompound(tagCompound);
-        entityPlayer.setCurrentItemOrArmor(0, backpackItemStack);
+        this.backpackItemStack.setTagCompound(tagCompound);
+        this.entityPlayer.setCurrentItemOrArmor(0, this.backpackItemStack);
     }
 
     @Override
