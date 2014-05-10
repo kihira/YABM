@@ -13,7 +13,7 @@ public class TabGear extends AbstractTab {
 
     @Override
     public void onTabClicked() {
-        YABM.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 2));
+        YABM.proxy.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 2));
     }
 
     @Override

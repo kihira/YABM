@@ -19,7 +19,7 @@ public class FMLEventHandler {
         Minecraft minecraft = Minecraft.getMinecraft();
         //System.out.println(Keyboard.areRepeatEventsEnabled());
         if (key == YABM.openGearGUI.getKeyCode() && minecraft.currentScreen == null) {;
-            YABM.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 2));
+            YABM.proxy.packetHandler.sendToServer(new YABMMessage.OpenGUIMessage((byte) 2));
         }
     }
 

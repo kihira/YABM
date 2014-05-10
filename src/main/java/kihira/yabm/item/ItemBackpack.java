@@ -53,6 +53,6 @@ public class ItemBackpack extends Item implements IBackpack {
         par3List.add("\u00a7cEquip backpack to prevent slowdown");
         int i = 0;
         if (par1ItemStack.hasTagCompound()) i = par1ItemStack.getTagCompound().getTagList("Contents", 0).tagCount();
-        par3List.add("Used slots: " + i + "/" + YABM.config.backpackSize * 9);
+        par3List.add("Used slots: " + i + "/" + YABM.backpackSize * 9);
     }
 }
