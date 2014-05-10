@@ -1,27 +1,16 @@
 package kihira.yabm;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import kihira.yabm.client.gui.TabGear;
 import kihira.yabm.item.ItemBackpack;
 import kihira.yabm.item.ItemVialHolder;
 import kihira.yabm.proxy.CommonProxy;
-import kihira.yabm.util.FMLEventHandler;
-import kihira.yabm.util.ForgeEventHandler;
-import kihira.yabm.util.GuiHandler;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import tconstruct.client.tabs.InventoryTabVanilla;
-import tconstruct.client.tabs.TabRegistry;
 
 import java.io.File;
 
@@ -46,14 +35,11 @@ public class YABM {
     public void preInit(FMLPreInitializationEvent e) {
         loadConfig(e.getSuggestedConfigurationFile());
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         proxy.registerRenderers();
-        FMLCommonHandler.instance().bus().register(new FMLEventHandler());
-        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
-        TabRegistry.registerTab(new InventoryTabVanilla());
-        TabRegistry.registerTab(new TabGear());
-        registerKeyBindings();
-        registerItems();
+        proxy.registerKeyBinds();
+        proxy.registerItems();
+        proxy.registerTabs();
+        proxy.registerHandlers();
     }
 
     private void loadConfig(File file) {
@@ -68,14 +54,5 @@ public class YABM {
         if (config.hasChanged()) {
             config.save();
         }
-    }
-
-    private void registerKeyBindings() {
-        ClientRegistry.registerKeyBinding(openGearGUI);
-    }
-
-    private void registerItems() {
-        GameRegistry.registerItem(itemBackpack, "backpack");
-        GameRegistry.registerItem(itemVialHolder, "vialholder");
     }
 }
