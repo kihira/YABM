@@ -1,6 +1,8 @@
 package kihira.yabm.util;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import kihira.yabm.YABM;
 import kihira.yabm.client.render.ItemBackpackRenderer;
 import kihira.yabm.client.render.VialHolderRenderer;
@@ -13,6 +15,7 @@ public class ForgeEventHandler {
     private final VialHolderRenderer vialHolderRenderer = new VialHolderRenderer();
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public void onPlayerRender(RenderPlayerEvent.Specials.Pre e) {
         for (int i = 0; i < e.entityPlayer.inventory.getSizeInventory(); i++) {
             //Render the backpack

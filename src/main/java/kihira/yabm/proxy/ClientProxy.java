@@ -4,12 +4,15 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import kihira.yabm.YABM;
 import kihira.yabm.client.gui.TabGear;
 import kihira.yabm.client.render.ItemBackpackRenderer;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import tconstruct.client.tabs.InventoryTabVanilla;
 import tconstruct.client.tabs.TabRegistry;
 
 public class ClientProxy extends CommonProxy {
+
+    public static final KeyBinding openGearGUI = new KeyBinding("key.opengeargui", 34, "key.categories.inventory");
 
     public static final ResourceLocation backpackTexture = new ResourceLocation("yabm", "textures/model/backpack.png");
     public static final ResourceLocation vialHolderTexture = new ResourceLocation("yabm", "textures/model/vialholder.png");
@@ -21,7 +24,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerKeyBinds() {
-        ClientRegistry.registerKeyBinding(YABM.openGearGUI);
+        ClientRegistry.registerKeyBinding(openGearGUI);
     }
 
     @Override
